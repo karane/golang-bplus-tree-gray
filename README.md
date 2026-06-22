@@ -1,4 +1,28 @@
-# golang-bplus-tree-gray
+# B+ Tree - Gray team
+
+## What is the structure?
+
+B+ tree is a self-balancing tree that is made for systems that read and write data in big blocks, mainly when the data lives on disk. It is a variation of the B-tree, with one main difference: all the values are stored in the leaf nodes, and the internal nodes only keep keys that are used to navigate the tree.
+
+## What are the pros and cons?
+
+### Pros
+- Really good with range queries, because the leaves are sorted and linked together.
+- Efficient insertion, O(log n).
+- The internal nodes are only keys, which allows shallower trees (more keys per node means fewer disk reads).
+
+### Cons
+- Not good for small amounts of keys (< 10 MB)
+    - Alternatives: AVL tree, Red-black tree
+- Random writes are slower, because of the node splits.
+- The implementation is complex.
+- Removing elements can be expensive, since the tree may need to rebalance or merge nodes.
+
+## What is the use case for the data structure?
+- **Database indexes:** This is the main use case. Almost every relational database uses B+ trees for indexing
+- **File systems:** XFS, JFS, Btrfs (the name literally means "B-tree FS") trees to index directories and metadata.
+
+---
 
 A set of B+ tree implementations in Go, built up in stages:
 
